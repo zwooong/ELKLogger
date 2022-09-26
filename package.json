@@ -1,10 +1,18 @@
 {
   "name": "elklogger",
+  "private": false,
   "version": "1.0.0",
   "description": "Javascript Logger for ELK Stack",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SEOJEEWOONG/ELKLogger.git"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts",
+    "prepublishOnly": "rm -rf dist && mkdir dist && npm run build"
   },
   "keywords": [
     "Javascript",
@@ -14,11 +22,11 @@
     "Logstash",
     "Kibana"
   ],
-  "author": "Jeewoong SEO",
+  "author": "Jeewoong SEO <tjwldnd94@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/SEOJEEWOONG/ELKLogger/tree/develop#readme",
   "dependencies": {
     "moment-timezone": "^0.5.37",
-    "node-os-utils": "^1.3.7",
     "typescript": "^4.8.3",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1",

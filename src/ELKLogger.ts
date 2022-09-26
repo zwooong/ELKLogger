@@ -68,7 +68,7 @@ class ELKLogger {
     public startTrace() {
         this.prevcpuUsage = process.cpuUsage()
         this.prevmemUsage = process.memoryUsage();
-        this.meta['start_time'] = moment.tz('Asia/Seoul').format('yyyy-MM-dd HH:mm:ss')
+        this.meta['start_time'] = moment.tz('Asia/Seoul').format('yyyy-MM-DD HH:mm:ss')
         this.startTime = Date.now();
     }
 
@@ -76,7 +76,7 @@ class ELKLogger {
         let cpuUsage = process.cpuUsage(this.prevcpuUsage)
         let cpuPercentage = Math.round(100 * (cpuUsage.user + cpuUsage.system) / ((Date.now() - this.startTime)*1000)*100)/100
         let memUsage = process.memoryUsage().heapUsed - this.prevmemUsage.heapUsed
-        this.meta['end_time'] = moment.tz('Asia/Seoul').format('yyyy-MM-dd HH:mm:ss')
+        this.meta['end_time'] = moment.tz('Asia/Seoul').format('yyyy-MM-DD HH:mm:ss')
         this.log = `${this.meta['action']} >> user_name : ${this.meta['user_name']}, user_group : ${this.meta['user_group']}, user_id : ${this.meta['user_id']}, start_time : ${this.meta['start_time']}, end_time : ${this.meta['end_time']}, line_id : ${this.meta['line_id']}, process_id : ${this.meta['process_id']}, metro_ppid : ${this.meta['metro_ppid']}, wafer_list : [${this.meta['wafer_list'].toString()}], time_lapse : ${this.meta['time_lapse']}, rows : ${this.meta['rows']}, cpu_usage : ${cpuPercentage}%, mem_usage : ${memUsage}, detail_message : ${message}`
     }
 

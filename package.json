@@ -1,7 +1,7 @@
 {
   "name": "elklogger",
   "private": false,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Javascript Logger for ELK Stack",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node ./src/index.ts",
-    "prepublishOnly": "rm -rf dist && mkdir dist && npm run build"
+    "rmdir": "node -e \"var fs = require('fs'); try{process.argv.slice(1).map((fpath) => fs.rmdirSync(fpath, { recursive: true }))}catch(err){console.log(`Dist not found`)}; process.exit(0);\"",
+    "prepublishOnly": "npm run rmdir dist && mkdir .\\dist && npm run build"
   },
   "keywords": [
     "Javascript",

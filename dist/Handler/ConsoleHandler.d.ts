@@ -1,5 +1,5 @@
 import { IFormatter } from "../Formatter/IFormatter";
-declare const winston: any;
+import * as winston from 'winston';
 export declare class ConsoleHandler {
     private level;
     private formatter;
@@ -11,4 +11,3 @@ export declare class ConsoleHandler {
     getHandleExceptions(): boolean;
     getHandler(): typeof winston.transports.Console;
 }
-export {};

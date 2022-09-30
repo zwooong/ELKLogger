@@ -1,5 +1,5 @@
 import { IFormatter } from "../Formatter/IFormatter";
-declare const winston: any;
+import * as winston from 'winston';
 export declare class FileHandler {
     private level;
     private formatter;
@@ -21,4 +21,3 @@ export declare class FileHandler {
     getZippedArchive(): boolean;
     getHandler(): typeof winston.transports.File;
 }
-export {};

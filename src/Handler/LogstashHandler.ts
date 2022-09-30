@@ -1,4 +1,4 @@
-const winstonlogstash = require('winston3-logstash-transport')
+import winstonlogstash from 'winston3-logstash-transport'
 
 export class LogstashHandler{
     private handler : typeof winstonlogstash

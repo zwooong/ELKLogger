@@ -38,7 +38,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.logger = void 0;
 const winston = __importStar(require("winston"));
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
-const node_process_1 = require("node:process");
 class ELKLogger {
     constructor() {
         this.handler = [];
@@ -79,18 +78,18 @@ class ELKLogger {
         return this.meta;
     }
     startTrace() {
-        this.prevcpuUsage = (0, node_process_1.cpuUsage)();
-        this.prevmemUsage = (0, node_process_1.memoryUsage)();
+        this.prevcpuUsage = process.cpuUsage();
+        this.prevmemUsage = process.memoryUsage();
         this.meta['start_time'] = moment_timezone_1.default.tz('Asia/Seoul').format('yyyy-MM-DD HH:mm:ss');
         this.startTime = Date.now();
     }
     setLog(message) {
         return __awaiter(this, void 0, void 0, function* () {
-            let cpu_usage = (0, node_process_1.cpuUsage)(this.prevcpuUsage);
-            let cpuPercentage = Math.round(100 * (cpu_usage.user + cpu_usage.system) / ((Date.now() - this.startTime) * 1000) * 100) / 100;
-            let mem_usage = (0, node_process_1.memoryUsage)().heapUsed - this.prevmemUsage.heapUsed;
+            let cpuUsage = process.cpuUsage(this.prevcpuUsage);
+            let cpuPercentage = Math.round(100 * (cpuUsage.user + cpuUsage.system) / ((Date.now() - this.startTime) * 1000) * 100) / 100;
+            let memUsage = process.memoryUsage().heapUsed - this.prevmemUsage.heapUsed;
             this.meta['end_time'] = moment_timezone_1.default.tz('Asia/Seoul').format('yyyy-MM-DD HH:mm:ss');
-            this.log = `${this.meta['action']} >> user_name : ${this.meta['user_name']}, user_group : ${this.meta['user_group']}, user_id : ${this.meta['user_id']}, start_time : ${this.meta['start_time']}, end_time : ${this.meta['end_time']}, line_id : ${this.meta['line_id']}, process_id : ${this.meta['process_id']}, metro_ppid : ${this.meta['metro_ppid']}, wafer_list : [${this.meta['wafer_list'].toString()}], time_lapse : ${this.meta['time_lapse']}, rows : ${this.meta['rows']}, cpu_usage : ${cpuPercentage}%, mem_usage : ${mem_usage}, detail_message : ${message}`;
+            this.log = `${this.meta['action']} >> user_name : ${this.meta['user_name']}, user_group : ${this.meta['user_group']}, user_id : ${this.meta['user_id']}, start_time : ${this.meta['start_time']}, end_time : ${this.meta['end_time']}, line_id : ${this.meta['line_id']}, process_id : ${this.meta['process_id']}, metro_ppid : ${this.meta['metro_ppid']}, wafer_list : [${this.meta['wafer_list'].toString()}], time_lapse : ${this.meta['time_lapse']}, rows : ${this.meta['rows']}, cpu_usage : ${cpuPercentage}%, mem_usage : ${memUsage}, detail_message : ${message}`;
         });
     }
     getLog() {

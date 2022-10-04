@@ -1,5 +1,4 @@
 import { IFormatter } from "../Formatter/IFormatter";
-import DailyRotateFile from 'winston-daily-rotate-file';
 export declare class DailyRotateFileHandler {
     private level;
     private formatter;
@@ -19,5 +18,5 @@ export declare class DailyRotateFileHandler {
     getFilename(): string;
     getzippedArchive(): boolean;
     getMaxFiles(): number | string;
-    getHandler(): DailyRotateFile;
+    getHandler(): any;
 }

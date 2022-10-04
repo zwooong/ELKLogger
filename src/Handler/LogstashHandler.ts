@@ -1,21 +1,20 @@
-const winstonlogstash = require('winston3-logstash-transport')
+import { LogstashTransport } from "winston-logstash-ts";
 
 export class LogstashHandler{
-    private handler : typeof winstonlogstash
-    constructor(private mode:string='tcp', private host: string, private port: number, private applicationName: string){
-        this.mode = mode;
+    private handler : LogstashTransport
+    constructor(private protocol:"udp" | "tcp" | undefined= "udp", private host: string, private port: number, private applicationName: string){
+        this.protocol = protocol;
         this.host = host;
         this.port = port;
         this.applicationName = applicationName;
-        this.handler = new winstonlogstash({
-            mode: this.mode,
+        this.handler = new LogstashTransport({
+            protocol: this.protocol,
             host: this.host,
             port: this.port,
-            applicationName: this.applicationName
         })
     }
-    public getMode() : string{
-        return this.mode
+    public getProtocol() : "udp" | "tcp" | undefined{
+        return this.protocol
     }
 
     
@@ -33,7 +32,7 @@ export class LogstashHandler{
         return this.applicationName
     }
     
-    public getHandler() : typeof winstonlogstash {
+    public getHandler() : LogstashTransport {
         return this.handler
     }
 }

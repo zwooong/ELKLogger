@@ -6,7 +6,7 @@ import * as fs from "fs"
 const basicformater = new WinstonFormatter((info) => `[${info.timestamp}] [${info.level.toUpperCase()}] ${info.message}`, 'Asia/Seoul', 'yyyy-MM-DD HH:mm:ss', true)
 
 export class DailyRotateFileHandler{
-    private handler: DailyRotateFile
+    private handler: any
     constructor(private level:string='info', private formatter:IFormatter=basicformater, private handleExceptions:boolean=true, private datePattern: string='YYYY-MM-DD', private dirname: string='./',
     private filename:string = 'log-%Date%.log', private zippedArchive: boolean=true, private maxFiles:number | string = '30d'){
         if(!fs.existsSync(dirname)){
@@ -70,7 +70,7 @@ export class DailyRotateFileHandler{
     }
 
     
-    public getHandler() : DailyRotateFile {
+    public getHandler() : any {
         return this.handler;
     }
     

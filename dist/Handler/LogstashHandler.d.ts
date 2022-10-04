@@ -1,4 +1,4 @@
-declare const winstonlogstash: any;
+import winstonlogstash from 'winston3-logstash-transport';
 export declare class LogstashHandler {
     private mode;
     private host;
@@ -12,4 +12,3 @@ export declare class LogstashHandler {
     getApplicationName(): string;
     getHandler(): typeof winstonlogstash;
 }
-export {};

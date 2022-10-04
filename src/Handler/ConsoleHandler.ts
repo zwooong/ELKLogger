@@ -1,6 +1,6 @@
 import { IFormatter } from "../Formatter/IFormatter";
 import { WinstonFormatter } from "../Formatter/WinstonFormatter";
-const winston = require('winston')
+import * as winston from 'winston'
 
 const basicformater = new WinstonFormatter((info) => `[${info.timestamp}] [${info.level}] ${info.message}`, 'Asia/Seoul', 'yyyy-MM-DD HH:mm:ss', true)
 
@@ -14,8 +14,7 @@ export class ConsoleHandler{
         this. handler = new winston.transports.Console({
             level: this.level,
             format: this.formatter.getFormat(),
-            handleExceptions: this.handleExceptions,
-            colorize: {all: true}
+            handleExceptions: this.handleExceptions
         })
     }
     

@@ -1,10 +1,11 @@
 import { IFormatter } from "../Formatter/IFormatter";
 import { WinstonFormatter } from "../Formatter/WinstonFormatter";
-const winston = require('winston')
+import * as fs from "fs"
+import * as path from "path"
+import * as winston from 'winston'
+
 const basicformater = new WinstonFormatter((info) => `[${info.timestamp}] [${info.level.toUpperCase()}] ${info.message}`, 'Asia/Seoul', 'yyyy-MM-DD HH:mm:ss', true)
 
-const fs = require('fs')
-const path = require('path')
 export class FileHandler{
     private handler: typeof winston.transports.File
     constructor(private level:string='info', private formatter:IFormatter=basicformater, private dirname: string='./',

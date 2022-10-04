@@ -37,7 +37,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.logger = void 0;
 const winston = __importStar(require("winston"));
-const winstonlogstash = require('winston3-logstash-transport');
 const moment_timezone_1 = __importDefault(require("moment-timezone"));
 class ELKLogger {
     constructor() {

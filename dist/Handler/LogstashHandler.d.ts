@@ -1,4 +1,3 @@
-import { LogstashTransport } from "winston-logstash-ts";
 export declare class LogstashHandler {
     private protocol;
     private host;
@@ -10,5 +9,5 @@ export declare class LogstashHandler {
     getHost(): string;
     getPort(): number;
     getApplicationName(): string;
-    getHandler(): LogstashTransport;
+    getHandler(): any;
 }

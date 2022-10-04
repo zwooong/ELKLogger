@@ -1,7 +1,7 @@
 import { LogstashTransport } from "winston-logstash-ts";
 
 export class LogstashHandler{
-    private handler : LogstashTransport
+    private handler : any
     constructor(private protocol:"udp" | "tcp" | undefined= "udp", private host: string, private port: number, private applicationName: string){
         this.protocol = protocol;
         this.host = host;
@@ -32,7 +32,7 @@ export class LogstashHandler{
         return this.applicationName
     }
     
-    public getHandler() : LogstashTransport {
+    public getHandler() : any {
         return this.handler
     }
 }

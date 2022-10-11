@@ -94,7 +94,7 @@ class ELKLogger {
             this.meta['memUsage'] = `${Math.round(memUsage / 1024 / 1024 * 100) / 100}MB`;
             this.meta['end_time'] = moment_timezone_1.default.tz('Asia/Seoul').format('yyyy-MM-DD HH:mm:ss');
             this.meta['time_lapse'] = Math.round(((Date.now() - this.startTime) / 1000) * 100) / 100;
-            this.log = message;
+            this.log = `${message} start_time : ${this.meta['start_time']}, end_time : ${this.meta['end_time']}, time_lapse : ${this.meta['time_lapse']}, cpu_usage : ${this.meta['cpuUsage']}, mem_usage : ${this.meta['memUsage']}`;
         });
     }
     getLog() {

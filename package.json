@@ -1,7 +1,7 @@
 {
   "name": "elklogger",
   "private": false,
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Javascript Logger for ELK Stack",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

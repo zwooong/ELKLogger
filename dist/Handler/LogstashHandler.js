@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LogstashHandler = void 0;
-const winston3_logstash_transport_1 = require("winston3-logstash-transport");
+const WinstonLogstash = require('winston3-logstash-transport');
 class LogstashHandler {
     constructor(mode = 'tcp', host, port, applicationName) {
         this.mode = mode;
@@ -12,7 +12,7 @@ class LogstashHandler {
         this.host = host;
         this.port = port;
         this.applicationName = applicationName;
-        this.handler = new winston3_logstash_transport_1.WinstonLogstash({
+        this.handler = new WinstonLogstash({
             mode: this.mode,
             host: this.host,
             port: this.port,

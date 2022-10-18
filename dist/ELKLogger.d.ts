@@ -1,5 +1,5 @@
 import * as winston from 'winston';
-import { WinstonLogstash } from 'winston3-logstash-transport';
+declare const WinstonLogstash: any;
 declare type metaType = {
     [key: string]: any;
 };

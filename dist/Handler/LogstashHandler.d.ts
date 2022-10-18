@@ -1,13 +1,14 @@
+import { WinstonLogstash } from 'winston3-logstash-transport';
 export declare class LogstashHandler {
-    private protocol;
+    private mode;
     private host;
     private port;
     private applicationName;
     private handler;
-    constructor(protocol: "udp" | "tcp" | undefined, host: string, port: number, applicationName: string);
-    getProtocol(): "udp" | "tcp" | undefined;
+    constructor(mode: string, host: string, port: number, applicationName: string);
+    getMode(): string;
     getHost(): string;
     getPort(): number;
     getApplicationName(): string;
-    getHandler(): any;
+    getHandler(): typeof WinstonLogstash;
 }

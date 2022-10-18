@@ -1,6 +1,6 @@
 import * as winston from 'winston'
 import moment from 'moment-timezone'
-import {WinstonLogstash} from 'winston3-logstash-transport'
+const WinstonLogstash = require('winston3-logstash-transport')
 
 type metaType = {
     [key: string] : any

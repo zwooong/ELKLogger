@@ -1,4 +1,5 @@
 import * as winston from 'winston';
+import { WinstonLogstash } from 'winston3-logstash-transport';
 declare type metaType = {
     [key: string]: any;
 };
@@ -12,8 +13,8 @@ declare class ELKLogger {
     private startTime;
     constructor();
     getLogger(): winston.Logger;
-    getHandler(): Array<winston.transport>;
-    addHandler(handler: winston.transport): void;
+    getHandler(): Array<winston.transport | typeof WinstonLogstash>;
+    addHandler(handler: winston.transport | typeof WinstonLogstash): void;
     setMeta(key: string, value: string | number | Array<string>): void;
     getMeta(): metaType;
     startTrace(): void;

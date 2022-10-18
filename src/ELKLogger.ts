@@ -1,5 +1,6 @@
 import * as winston from 'winston'
 import moment from 'moment-timezone'
+import {WinstonLogstash} from 'winston3-logstash-transport'
 
 type metaType = {
     [key: string] : any
@@ -49,11 +50,11 @@ class ELKLogger {
         return this.logger
     }
     
-    public getHandler() : Array<winston.transport> {
+    public getHandler() : Array<winston.transport | typeof WinstonLogstash>{
         return this.handler;
     }
     
-    public addHandler(handler: winston.transport){
+    public addHandler(handler: winston.transport | typeof WinstonLogstash){
         this.handler.push(handler)
         this.logger.add(handler);
     }

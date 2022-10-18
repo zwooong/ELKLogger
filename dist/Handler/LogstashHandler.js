@@ -1,25 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LogstashHandler = void 0;
-const winston_logstash_ts_1 = require("winston-logstash-ts");
+const winston3_logstash_transport_1 = require("winston3-logstash-transport");
 class LogstashHandler {
-    constructor(protocol = "udp", host, port, applicationName) {
-        this.protocol = protocol;
+    constructor(mode = 'tcp', host, port, applicationName) {
+        this.mode = mode;
         this.host = host;
         this.port = port;
         this.applicationName = applicationName;
-        this.protocol = protocol;
+        this.mode = mode;
         this.host = host;
         this.port = port;
         this.applicationName = applicationName;
-        this.handler = new winston_logstash_ts_1.LogstashTransport({
-            protocol: this.protocol,
+        this.handler = new winston3_logstash_transport_1.WinstonLogstash({
+            mode: this.mode,
             host: this.host,
             port: this.port,
+            applicationName: this.applicationName
         });
     }
-    getProtocol() {
-        return this.protocol;
+    getMode() {
+        return this.mode;
     }
     getHost() {
         return this.host;
